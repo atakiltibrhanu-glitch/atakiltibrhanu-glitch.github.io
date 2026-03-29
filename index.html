@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atakilti Brhanu Kiros | GeoAI Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0d1117;
+  --paper: #fafaf8;
+  --warm: #f5f0e8;
+  --gold: #c9963a;
+  --gold-light: #e8c97a;
+  --rust: #8b4513;
+  --teal: #1a6b6b;
+  --teal-light: #e8f4f4;
+  --muted: #6b7280;
+  --border: #e5e0d8;
+  --card: #ffffff;
+  --accent-bar: #c9963a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+header {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(250,250,248,0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1120px; margin: 0 auto;
+  padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 62px;
+}
+.nav-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-brand em {
+  font-style: italic;
+  color: var(--gold);
+}
+nav { display: flex; gap: 28px; }
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: .88rem;
+  font-weight: 400;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+nav a:hover { color: var(--ink); }
+
+/* ── LAYOUT ── */
+.wrap {
+  max-width: 1120px; margin: 0 auto; padding: 0 28px;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 90px 0 80px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 64px;
+  align-items: start;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 24px;
+}
+.eyebrow-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(1.3); }
+}
+.eyebrow-text {
+  font-size: .82rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  line-height: 1.06;
+  letter-spacing: -.03em;
+  margin-bottom: 22px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--teal);
+}
+.hero-lead {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 640px;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  padding: 11px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: .9rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+  transition: all .2s;
+  display: inline-block;
+}
+.btn-dark {
+  background: var(--ink);
+  color: #fff;
+}
+.btn-dark:hover { background: #1e293b; transform: translateY(-1px); }
+.btn-outline {
+  border: 1.5px solid var(--border);
+  color: var(--ink);
+  background: transparent;
+}
+.btn-outline:hover { border-color: var(--ink); transform: translateY(-1px); }
+
+/* ── PROFILE CARD ── */
+.profile-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.profile-photo-wrap {
+  background: var(--warm);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 3/4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-photo-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px;
+  text-align: center;
+}
+.photo-initials {
+  width: 200px; height: 300px;
+  border-radius: 25%;
+  background: var(--gold);
+  color: white;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.photo-placeholder p {
+  font-size: .82rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.profile-meta {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+}
+.profile-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+.profile-role {
+  font-size: .85rem;
+  color: var(--muted);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.profile-links {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.profile-link {
+  display: flex; align-items: center; gap: 10px;
+  font-size: .85rem;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--warm);
+  transition: background .2s;
+}
+.profile-link:hover { background: var(--teal-light); }
+.link-icon {
+  width: 22px; height: 22px;
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.link-icon svg { width: 18px; height: 18px; }
+.link-icon img { width: 22px; height: 22px; object-fit: contain; }
+
+/* ── SECTION GENERIC ── */
+.section {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+.section-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 10px;
+}
+.section-num {
+  font-size: .75rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  letter-spacing: -.025em;
+  margin-bottom: 8px;
+}
+.section-sub {
+  color: var(--muted);
+  font-size: .95rem;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+/* ── STAT ROW ── */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.stat {
+  background: var(--card);
+  padding: 28px 24px;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.8rem;
+  color: var(--teal);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: .82rem;
+  color: var(--muted);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* ── ABOUT CARD ── */
+.about-body {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: #374151;
+  font-weight: 300;
+}
+.about-body p + p { margin-top: 16px; }
+.highlight-phrase {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  color: var(--teal);
+}
+
+/* ── RESEARCH THEMES ── */
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.theme-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  background: var(--card);
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+.theme-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(13,17,23,.08);
+}
+.theme-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.theme-card:nth-child(1)::before { background: var(--teal); }
+.theme-card:nth-child(2)::before { background: var(--gold); }
+.theme-card:nth-child(3)::before { background: var(--rust); }
+.theme-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.4rem;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.theme-card h3 {
+  font-size: 1.02rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+.theme-card p {
+  font-size: .9rem;
+  color: var(--muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── SUPERVISORS ── */
+.supervisors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.supervisor-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  background: var(--card);
+}
+.supervisor-role {
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.supervisor-card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.supervisor-card h3 a {
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid var(--border);
+  transition: border-color .2s;
+}
+.supervisor-card h3 a:hover { border-color: var(--teal); color: var(--teal); }
+.supervisor-inst {
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+/* ── EDUCATION ── */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.edu-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  background: var(--card);
+}
+.edu-year {
+  display: inline-block;
+  background: var(--warm);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.edu-card h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  letter-spacing: -.01em;
+}
+.edu-inst {
+  font-size: .88rem;
+  color: var(--teal);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.edu-thesis {
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.6;
+  font-style: italic;
+}
+.edu-advisor {
+  font-size: .82rem;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ── EXPERIENCE TIMELINE ── */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 8px; bottom: 8px;
+  width: 1px;
+  background: var(--border);
+}
+.timeline-item {
+  position: relative;
+  padding-bottom: 44px;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -28px; top: 6px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--gold);
+}
+.tl-period {
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.tl-role {
+  font-size: 1.06rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+  letter-spacing: -.01em;
+}
+.tl-inst {
+  font-size: .9rem;
+  color: var(--teal);
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.tl-body {
+  font-size: .92rem;
+  color: var(--muted);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 680px;
+}
+
+/* ── PUBLICATIONS ── */
+.pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.pub-item {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.pub-item:first-child { padding-top: 0; }
+.pub-item:last-child { border-bottom: none; }
+.pub-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-top: 4px;
+}
+.pub-year {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  color: var(--ink);
+  line-height: 1;
+}
+.pub-type {
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.type-journal { background: #e8f4f4; color: var(--teal); }
+.type-conf { background: #fef3e2; color: #92400e; }
+.type-review { background: #f3f4f6; color: var(--muted); }
+.pub-title {
+  font-size: .97rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 6px;
+  letter-spacing: -.01em;
+}
+.pub-venue {
+  font-size: .86rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.pub-tag {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 500;
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.pub-title a{
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.pub-title a:hover{
+  color: var(--teal);
+  border-color: var(--teal);
+}
+.notice-box{
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  background: #fffdf8;
+  border-radius: 14px;
+  padding: 18px 18px 18px 16px;
+  color: #4b5563;
+  font-size: .92rem;
+  line-height: 1.75;
+  margin-bottom: 22px;
+}
+.scholar-controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  align-items:center;
+  margin-bottom:18px;
+}
+.input{
+  flex:1;
+  min-width:260px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 12px;
+  font:inherit;
+  background:#fff;
+}
+.chip{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  background:var(--warm);
+  border:1px solid var(--border);
+  color:var(--muted);
+  font-size:.78rem;
+  margin-right:8px;
+  margin-top:8px;
+}
+.scholar-list{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.scholar-item{
+  padding:18px 0;
+  border-bottom:1px solid var(--border);
+}
+.scholar-item:last-child{border-bottom:none}
+.scholar-item-title{
+  font-size:.98rem;
+  font-weight:500;
+  line-height:1.5;
+}
+.scholar-item-title a{
+  color:var(--ink);
+  text-decoration:none;
+}
+.scholar-item-title a:hover{color:var(--teal)}
+.scholar-meta{
+  font-size:.85rem;
+  color:var(--muted);
+  margin-top:6px;
+  line-height:1.7;
+}
+.small-note{
+  font-size:.82rem;
+  color:var(--muted);
+  margin-top:14px;
+}
+
+/* ── PROJECTS ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  background: var(--card);
+  transition: transform .2s;
+}
+.project-card:hover { transform: translateY(-2px); }
+.project-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+}
+.project-card h3 {
+  font-size: .97rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.project-card p {
+  font-size: .87rem;
+  color: var(--muted);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.contact-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  background: var(--card);
+}
+.contact-card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.contact-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 14px;
+}
+.contact-item:last-child { margin-bottom: 0; }
+.contact-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: var(--warm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.contact-label {
+  font-size: .75rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+.contact-value {
+  font-size: .9rem;
+  color: var(--ink);
+}
+.contact-value a {
+  color: var(--teal);
+  text-decoration: none;
+}
+.contact-value a:hover { text-decoration: underline; color: var(--ink); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 36px 0;
+  text-align: center;
+}
+footer p {
+  font-size: .85rem;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .profile-aside { flex-direction: row; flex-wrap: wrap; }
+  .profile-photo-wrap { width: 160px; flex-shrink: 0; aspect-ratio: auto; height: 200px; }
+  .profile-meta { flex: 1; min-width: 200px; }
+  .themes-grid, .supervisors-grid, .projects-grid { grid-template-columns: 1fr; }
+  .edu-grid, .contact-grid { grid-template-columns: 1fr; }
+  .stat-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .nav-inner { padding: 0 16px; }
+  .wrap { padding: 0 16px; }
+  nav { display: none; }
+  .hero { padding: 50px 0 60px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Atakilti <em>Brhanu</em>Kiros</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
+        <span class="eyebrow-text">PhD Researcher · Ariel University, Israel</span>
+      </div>
+      <h1>Building <em>explainable</em> GeoAI for inclusive urban mobility.</h1>
+      <p class="hero-lead">
+        Geospatial data scientist and PhD researcher working at the intersection of
+        multimodal urban analytics, spatiotemporal machine learning, and explainable AI.
+        14+ years of academic experience. Recently accepted in <em>Urban Science</em>.
+      </p>
+      <p style="margin:14px 0 0;color:var(--muted);font-size:.92rem;line-height:1.8;">
+        Supervisors:
+        <a href="https://cris.ariel.ac.il/en/persons/achituv-cohen/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">Dr. Achituv Cohen</a>,
+        <a href="https://cris.ariel.ac.il/en/persons/yuri-ribakov-2/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">Prof. Yuri Ribakov</a>,
+        <a href="https://cris.ariel.ac.il/en/persons/israel-klein-2/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">Dr. Israel Klein</a>
+      </p>
+      <p style="margin:10px 0 0;color:var(--muted);font-size:.85rem;">
+        Keywords: GeoAI, Urban Mobility, Explainable AI, Spatiotemporal ML, Spatial Data Science
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-dark" href="#publications">Publications</a>
+        <a class="btn btn-outline" href="https://scholar.google.com/citations?hl=en&user=eW5O_YkAAAAJ">Google Scholar </a>
+        <a class="btn btn-outline" href="ATAKILTI_BRHANU_KIROS_CV.pdf" download>Download CV</a>
+        <a class="btn btn-outline" href="#contact">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="profile-aside">
+      <div class="profile-photo-wrap">
+        <div class="photo-placeholder">
+          <div class="photo-initials"><img src="new.jpg" alt="Atakilti Brhanu Kiros profile photo"></div>
+          <p>Profile photo</p>
+        </div>
+      </div>
+      <div class="profile-meta">
+        <div class="profile-name"> Atakilti Brhanu Kiros</div>
+        <div class="profile-role">PhD Researcher in GeoAI, Urban Mobility &amp; Spatial ML<br>Urban Data Science / GeoAI Research, Ariel University, Israel</div>
+        <div class="profile-links">
+          <a href="https://www.linkedin.com/in/atakilti-brhanu-0061a16a" target="_blank" rel="noopener" class="profile-link">
+            <span class="link-icon">
+              <svg viewBox="0 0 24 24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </span> LinkedIn Profile
+          </a>
+          <a href="mailto:jatakilt.kiros@msmail.ariel.ac.il" class="profile-link">
+            <span class="link-icon" style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:1px;">
+              <img src="https://www.ariel.ac.il/wp/en/wp-content/themes/ariel-2024/images/logo.svg" alt="AU"
+                onerror="this.outerHTML='<svg viewBox=&quot;0 0 24 24&quot; fill=&quot;#1a6b6b&quot; width=&quot;18&quot; height=&quot;18&quot;><path d=&quot;M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z&quot;/></svg>'">
+            </span> Ariel University Email
+          </a>
+          <a href="mailto:atakilti.brhanu@mu.edu.et" class="profile-link">
+            <span class="link-icon">
+              <svg viewBox="0 0 24 24" fill="#c9963a" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </span> Mekelle University Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="section-label">
+      <span class="section-num">01 — About</span>
+    </div>
+    <h2>Research Profile</h2>
+    <p class="section-sub">Current focus and academic identity.</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">14+</div>
+        <div class="stat-label">Years Academic Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Publications &amp; Accepted Papers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Countries of Research Activity</div>
+      </div>
+    </div>
+
+    <div class="about-body">
+      <p>
+        I am a PhD researcher in Geospatial Data Science at Ariel University, Israel, with a strong foundation in computer science
+        and over 14 years of academic teaching and research leadership across Ethiopian universities.
+        My work sits at the intersection of <span class="highlight-phrase">machine learning, urban mobility, and spatial intelligence</span> —
+        building systems that are not only accurate but interpretable and actionable for decision-makers.
+      </p>
+      <p>
+        My research interests span time-series forecasting, predictive modelling, resource optimisation,
+        applied AI for real-world systems, healthcare analytics, emergency service demand modelling,
+        and explainable geospatial intelligence. I am particularly focused on the integration of
+        multimodal spatial and temporal data for interpretable decision support systems
+        in urban environments.
+      </p>
+    </div>
+  </section>
+
+  <!-- RESEARCH THEMES -->
+  <section id="research" class="section">
+    <div class="section-label">
+      <span class="section-num">02 — Research</span>
+    </div>
+    <h2>Research Themes</h2>
+    <p class="section-sub">Main directions shaping my current work.</p>
+    <div class="themes-grid">
+      <div class="theme-card">
+        <div class="theme-num">01</div>
+        <h3>Machine Learning &amp; Deep Learning</h3>
+        <p>Predictive modelling, representation learning, and intelligent systems for applied urban and public-sector domains.</p>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">02</div>
+        <h3>Spatiotemporal &amp; Time-Series Modelling</h3>
+        <p>Urban mobility forecasting, dynamic pattern analysis, and multimodal geospatial data fusion for inclusive city systems.</p>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">03</div>
+        <h3>Explainable AI &amp; Decision Support</h3>
+        <p>Interpretable machine learning for urban analytics, healthcare intelligence, and resource optimisation in public systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPERVISORS -->
+  <section id="supervisors" class="section">
+    <div class="section-label">
+      <span class="section-num">03 — Supervision</span>
+    </div>
+    <h2>Supervisory Team</h2>
+    <p class="section-sub">Academic guidance at Ariel University.</p>
+    <div class="supervisors-grid">
+      <div class="supervisor-card">
+        <div class="supervisor-role">Primary Supervisor</div>
+        <h3><a href="https://cris.ariel.ac.il/en/persons/achituv-cohen/" target="_blank" rel="noopener">Dr. Achituv Cohen</a></h3>
+        <div class="supervisor-inst">Ariel University, Israel</div>
+      </div>
+      <div class="supervisor-card">
+        <div class="supervisor-role">Co-Supervisor</div>
+        <h3><a href="https://cris.ariel.ac.il/en/persons/yuri-ribakov-2/" target="_blank" rel="noopener">Prof. Yuri Ribakov</a></h3>
+        <div class="supervisor-inst">Ariel University, Israel</div>
+      </div>
+      <div class="supervisor-card">
+        <div class="supervisor-role">Co-Supervisor</div>
+        <h3><a href="https://cris.ariel.ac.il/en/persons/israel-klein-2/" target="_blank" rel="noopener">Dr. Israel Klein</a></h3>
+        <div class="supervisor-inst">Ariel University, Israel</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section">
+    <div class="section-label">
+      <span class="section-num">04 — Education</span>
+    </div>
+    <h2>Academic Training</h2>
+    <p class="section-sub">Degrees and thesis work.</p>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <span class="edu-year">2016</span>
+        <h3>Master of Science in Computer Science</h3>
+        <div class="edu-inst">Mekelle University, Ethiopia</div>
+        <div class="edu-thesis">Cloud Based M-Learning Adoption Model: The Case of Ethiopian Higher Education Institutions North Cluster</div>
+        <div class="edu-advisor">Advisor: Dr. Abiot Sinamo</div>
+      </div>
+      <div class="edu-card">
+        <span class="edu-year">2009</span>
+        <h3>Bachelor of Science in Information Technology</h3>
+        <div class="edu-inst">Mekelle University, Ethiopia</div>
+        <div class="edu-thesis">Online Student Registration System for Mekelle University</div>
+        <div class="edu-advisor">Advisor: Kebede Abrha (PhD)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="section-label">
+      <span class="section-num">05 — Experience</span>
+    </div>
+    <h2>Academic Experience</h2>
+    <p class="section-sub">Teaching, supervision, and research leadership.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-period">Feb 2023 – Oct 2025</div>
+        <div class="tl-role">Lecturer &amp; Head of Research and Community Engagement</div>
+        <div class="tl-inst">Mekelle Institute of Technology, Mekelle University</div>
+        <div class="tl-body">
+          Delivered undergraduate courses across computer science and engineering — programming, data structures,
+          databases, AI, big data, cloud computing, and machine learning. Supervised undergraduate research projects,
+          supported student innovation, and led community-focused, interdisciplinary digital development initiatives.
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-period">Nov 2012 – Feb 2023</div>
+        <div class="tl-role">Lecturer, Department of Computer Science</div>
+        <div class="tl-inst">Aksum University, Ethiopia</div>
+        <div class="tl-body">
+          Delivered a broad range of computer science courses and co-advised graduate research over a decade.
+          Teaching areas included programming languages, algorithms and data structures, databases,
+          computer networks, AI, and machine learning.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="section">
+    <div class="section-label">
+      <span class="section-num">06 — Publications</span>
+    </div>
+    <h2>Publications</h2>
+    <p class="section-sub">Journal articles, conference papers, and work under review.</p>
+    <div class="pub-list">
+
+      <div class="pub-item">
+        <div class="pub-badge">
+          <div class="pub-year">2026</div>
+          <span class="pub-type type-journal">Journal</span>
+        </div>
+        <div>
+          <div class="pub-title"><a href="https://www.preprints.org/manuscript/202602.0673" target="_blank" rel="noopener">GeoAI and Multimodal Geospatial Data Fusion for Inclusive Urban Mobility: Methods, Applications, and Future Directions.</a></div>
+          <div class="pub-venue">Kiros, A. B.; Ribakov, Y.; Klein, I.; Cohen, A. — <em>Urban Science</em></div>
+          <span class="pub-tag">✓ Accepted 19 March 2026</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge">
+          <div class="pub-year">2024</div>
+          <span class="pub-type type-conf">Conf.</span>
+        </div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1109/GlobalAISummit62156.2024.10947842" target="_blank" rel="noopener">Cloud-based M-learning adoption model.</a></div>
+          <div class="pub-venue">Kiros, A. B., et al. — <em>IEEE Global AI Summit</em>, India. DOI: 10.1109/GlobalAISummit62156.2024.10947842</div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge">
+          <div class="pub-year">2021</div>
+          <span class="pub-type type-journal">Journal</span>
+        </div>
+        <div>
+          <div class="pub-title"><a href="https://ijece.iaescore.com/index.php/IJECE/article/view/22494" target="_blank" rel="noopener">A spelling checker and corrector for low-resourced Tigrigna language.</a></div>
+          <div class="pub-venue">Kiros, A. B. &amp; Ukbagergis, P. — <em>International Journal of Electrical and Computer Engineering</em>, 11(3)</div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge">
+          <div class="pub-year">2015</div>
+          <span class="pub-type type-journal">Journal</span>
+        </div>
+        <div>
+          <div class="pub-title"><a href="https://www.ijirset.com/upload/2015/november/3_CONCEPTUAL.pdf" target="_blank" rel="noopener">Cloud-based M-learning adoption framework.</a></div>
+          <div class="pub-venue">Kiros, A. B. &amp; Mulugeta, H. — <em>IJIRSET</em>, 4(11)</div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge">
+          <div class="pub-year">—</div>
+          <span class="pub-type type-review">Review</span>
+        </div>
+        <div>
+          <div class="pub-title">Integration of Predictive Data Mining Models and Knowledge Base System for Tax Fraud Detection: A Case Study of the Tigray Revenue Development Authority.</div>
+          <div class="pub-venue">Kiros, A. B.; Heshe, M. H.; Weldeanenia, A. G.; Munisankaraiah, S. — Under review / SSRN preprint available</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="section-label">
+      <span class="section-num">07 — Projects</span>
+    </div>
+    <h2>Selected Research Projects</h2>
+    <p class="section-sub">Representative themes from applied and interdisciplinary work.</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon" style="background:#e8f4f4;">🗺️</div>
+        <h3>Urban GeoAI &amp; Mobility</h3>
+        <p>Multimodal geospatial data fusion for inclusive urban mobility analysis and explainable spatial AI systems.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-icon" style="background:#fef3e2;">⚖️</div>
+        <h3>AI for Public Systems</h3>
+        <p>Predictive and knowledge-based systems for tax fraud detection, emergency demand forecasting, and decision support.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-icon" style="background:#f3f4f6;">🔧</div>
+        <h3>Applied Intelligent Platforms</h3>
+        <p>License plate recognition, personalised learning assistants, smart tourism, vulnerability detection, and multilingual information systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="section-label">
+      <span class="section-num">08 — Contact</span>
+    </div>
+    <h2>Get in Touch</h2>
+    <p class="section-sub">Professional contact details and academic links.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Contact Details</h3>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="#6b7280" width="20" height="20"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value"><a href="https://www.google.com/maps/dir//Ariel+University,+Ramat+HaGolan+St+65,+Ari%27el/@32.1072114,35.2038551,11z/data=!4m8!4m7!1m0!1m5!1m1!1s0x151d27aa4f0daaf7:0x2ca995d16b10cd02!2m2!1d35.2077403!2d32.1031904?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Ariel University, Ramat HaGolan St 65, Ariel</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="#6b7280" width="20" height="20"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value"><a href="tel:+972502253024">+972 50-225-3024</a> &nbsp;/&nbsp; <a href="tel:+251914001488">+251 914 001 488</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:#fff;border:1px solid #e5e0d8;border-radius:6px;padding:2px;width:36px;height:36px;"><img src="https://www.ariel.ac.il/wp/en/wp-content/themes/ariel-2024/images/logo.svg" alt="AU" width="30" height="30" style="object-fit:contain;" onerror="this.outerHTML='<svg viewBox=&quot;0 0 24 24&quot; fill=&quot;#1a6b6b&quot; width=&quot;20&quot; height=&quot;20&quot;><path d=&quot;M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z&quot;/></svg>'"></div>
+          <div>
+            <div class="contact-label">Ariel University</div>
+            <div class="contact-value"><a href="mailto:jatakilt.kiros@msmail.ariel.ac.il">jatakilt.kiros@msmail.ariel.ac.il</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="#c9963a" width="20" height="20"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <div>
+            <div class="contact-label">Mekelle University</div>
+            <div class="contact-value"><a href="mailto:atakilti.brhanu@mu.edu.et">atakilti.Brhanu@mu.edu.et</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Academic Profiles</h3>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:#0A66C2;border-radius:6px;width:36px;height:36px;"><svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value"><a href="https://www.linkedin.com/in/atakilti-brhanu-0061a16a" target="_blank" rel="noopener">orcid.org/0000-0001-5999-5098</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:#fff;border:1px solid #e5e0d8;border-radius:6px;padding:2px;width:36px;height:36px;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAk1BMVEVHcEz////////L2vX+///E1vRzpvplic/1+f6sxvVZlPY9g/UzZsBQe8qfteHv9P2VsedEiPfq8f6DrvhBhfQ2acN5mdXf6/5pnPTK2/omYcH////l7v2jwvq5zfJ0o/fw9P2dwf4tfPNdjuGQq912p/tPgNSZr998rPzv9PuMtf2ixf+gw/+oyP/G3P/E2v/h6//5/rGiAAAAMXRSTlMAAQ5rHon/+zLB/P//+71O2f9s6f//66/+3v8DQO2e8Fb////////7/4T//////tmVtHyq0wAAAQtJREFUeAF101WWwyAAQNG4QSXu7p79r25gSnMgbd/vjaAcE89zPxNEUfhlkqyosvTdNN0A8HbXvtnjaQATwtvz8WmWbQLHhC50PetqfuCgEKJuPkNSCABBXBRKJ8VJioBCFz6T+D0722QR5b1mLGU5IRpdNZPw7AJACAAA4ZuhimZclBUhM1CUIKhdwlFTcHGRAoDNaJUWp3Tw3/oifi0bQmNoSUOH56prZJZZAMzTkLoQD4ckyHbQKmdt7cn01o0T08jRFfNCNRcMWguDFoOPlcHLlm4lhdt1P2fqRf+CWjifRnaT6rGvJaZy3R8cf8E48Tc0qnXzyT6zCYl1HFZCrQ1zFfg45ulP/gHS1CtqwZl9IgAAAABJRU5ErkJggg==" alt="AU" width="30" height="30" style="object-fit:contain;" onerror="this.outerHTML='<svg viewBox=&quot;0 0 24 24&quot; fill=&quot;#1a6b6b&quot; width=&quot;20&quot; height=&quot;20&quot;><path d=&quot;M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z&quot;/></svg>'"></div>
+          <div>
+            <div class="contact-label">Google Scholar</div>
+            <div class="contact-value"><a href="https://scholar.google.com/citations?hl=en&user=eW5O_YkAAAAJ" target="_blank" rel="noopener">Atakilti Kiros</a></div>
+          </div>
+        </div>
+		     <div class="contact-item">
+           <div class="contact-icon" style="background:#fff;border:1px solid #e5e0d8;border-radius:6px;padding:2px;width:36px;height:36px;"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" alt="AU" width="30" height="30" style="object-fit:contain;" onerror="this.outerHTML='<svg viewBox=&quot;0 0 24 24&quot; fill=&quot;#1a6b6b&quot; width=&quot;20&quot; height=&quot;20&quot;><path d=&quot;M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z&quot;/></svg>'"></div>
+         <div>
+            <div class="contact-label">ORCID</div>
+            <div class="contact-value"><a href="https://orcid.org/0000-0001-5999-5098" target="_blank" rel="noopener">linkedin.com/in/atakilti-brhanu-0061a16a</a></div>
+          </div>
+        </div>
+		     <div class="contact-item">
+           <div class="contact-icon" style="background:#fff;border:1px solid #e5e0d8;border-radius:6px;padding:2px;width:36px;height:36px;"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="AU" width="30" height="30" style="object-fit:contain;" onerror="this.outerHTML='<svg viewBox=&quot;0 0 24 24&quot; fill=&quot;#1a6b6b&quot; width=&quot;20&quot; height=&quot;20&quot;><path d=&quot;M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z&quot;/></svg>'"></div>
+         <div>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value"><a href="https://github.com/atakiltibrhanu-glitch" target="_blank" rel="noopener">GitHub.com/atakiltibrhanu-glitch</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Atakilti Brhanu Kiros · PhD Researcher, Ariel University · 2026</p>
+</footer>
+
+
+<script>
+const SCHOLAR_AUTHOR_ID = "eW5O_YkAAAAJ";
+
+async function loadScholarPubs() {
+  const apiKey = document.getElementById("serpapi-key").value.trim();
+  const status = document.getElementById("scholar-status");
+  const list = document.getElementById("scholar-list");
+
+  if (!apiKey) {
+    status.textContent = "Add a SerpAPI key first. The page will keep using the curated publication list above until you do.";
+    return;
+  }
+
+  status.textContent = "Loading publications from Google Scholar profile…";
+  list.innerHTML = "";
+
+  try {
+    const url = `https://serpapi.com/search.json?engine=google_scholar_author&author_id=${SCHOLAR_AUTHOR_ID}&api_key=${encodeURIComponent(apiKey)}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Request failed with status " + res.status);
+    const data = await res.json();
+    const articles = (data.articles || []).slice(0, 8);
+
+    if (!articles.length) {
+      status.textContent = "No publications were returned by the API.";
+      return;
+    }
+
+    list.innerHTML = articles.map((article) => {
+      const title = article.title || "Untitled";
+      const link = article.link || "#";
+      const authors = article.authors || "";
+      const publication = article.publication || "";
+      const year = article.year || "";
+      const cited = article.cited_by && article.cited_by.value ? ` · Cited by ${article.cited_by.value}` : "";
+      return `
+        <div class="scholar-item">
+          <div class="scholar-item-title"><a href="${link}" target="_blank" rel="noopener">${title}</a></div>
+          <div class="scholar-meta">${authors}${publication ? " · " + publication : ""}${year ? " · " + year : ""}${cited}</div>
+        </div>
+      `;
+    }).join("");
+
+    status.textContent = "Automatic Google Scholar feed loaded successfully.";
+  } catch (err) {
+    status.textContent = "Could not load the automatic feed. Keep using the curated list above, or verify the API key and author ID.";
+    console.error(err);
+  }
+}
+</script>
+
+</body>
+</html>
