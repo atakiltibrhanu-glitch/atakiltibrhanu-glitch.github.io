@@ -353,7 +353,7 @@ nav a:hover { color: var(--ink); }
 /* ── SUPERVISORS ── */
 .supervisors-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
 .supervisor-card {
@@ -633,8 +633,8 @@ nav a:hover { color: var(--ink); }
 /* ── PROJECTS ── */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 .project-card {
   border: 1px solid var(--border);
@@ -661,6 +661,67 @@ nav a:hover { color: var(--ink); }
   color: var(--muted);
   line-height: 1.65;
   font-weight: 300;
+}
+
+
+/* ── FEATURED PROJECT ── */
+.project-card-featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 20px;
+  border-left: 4px solid var(--teal);
+  background: linear-gradient(135deg, #ffffff 0%, #f2faf9 100%);
+  padding: 30px 28px;
+}
+.project-card-featured .project-icon {
+  margin-bottom: 0;
+}
+.project-kicker {
+  font-size: .75rem;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.project-card-featured h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.45rem;
+  letter-spacing: -.02em;
+  margin-bottom: 8px;
+}
+.project-card-featured p {
+  max-width: 900px;
+  font-size: .92rem;
+  line-height: 1.75;
+}
+.project-role {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(26,107,107,.16);
+  font-size: .87rem;
+  color: #475569;
+  line-height: 1.7;
+}
+.project-role strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.project-tag {
+  padding: 4px 10px;
+  border: 1px solid #cfe6e3;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--teal);
+  font-size: .75rem;
+  font-weight: 500;
 }
 
 /* ── CONTACT ── */
@@ -727,16 +788,23 @@ footer p {
 }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 1000px) {
+  .supervisors-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; }
   .profile-aside { flex-direction: row; flex-wrap: wrap; }
   .profile-photo-wrap { width: 160px; flex-shrink: 0; aspect-ratio: auto; height: 200px; }
   .profile-meta { flex: 1; min-width: 200px; }
   .themes-grid, .supervisors-grid, .projects-grid { grid-template-columns: 1fr; }
+  .project-card-featured { grid-template-columns: 1fr; gap: 12px; }
   .edu-grid, .contact-grid { grid-template-columns: 1fr; }
   .stat-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
+  .project-card-featured { grid-template-columns: 1fr; }
+  .project-card-featured .project-icon { margin-bottom: 0; }
+  .supervisors-grid { grid-template-columns: 1fr; }
   .nav-inner { padding: 0 16px; }
   .wrap { padding: 0 16px; }
   nav { display: none; }
@@ -752,6 +820,7 @@ footer p {
     <nav>
       <a href="#about">About</a>
       <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
       <a href="#education">Education</a>
       <a href="#experience">Experience</a>
       <a href="#publications">Publications</a>
@@ -779,7 +848,7 @@ footer p {
         Supervisors:
         <a href="https://cris.ariel.ac.il/en/persons/achituv-cohen/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">Dr. Achituv Cohen</a>,
         <a href="https://cris.ariel.ac.il/en/persons/yuri-ribakov-2/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">Prof. Yuri Ribakov</a>,
-        <a href="https://cris.ariel.ac.il/en/persons/israel-klein-2/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">Dr. Israel Klein</a>
+        
       </p>
       <p style="margin:10px 0 0;color:var(--muted);font-size:.85rem;">
         Keywords: GeoAI, Urban Mobility, Explainable AI, Spatiotemporal ML, Spatial Data Science
@@ -830,7 +899,7 @@ footer p {
       <span class="section-num">01 — About</span>
     </div>
     <h2>Research Profile</h2>
-    <p class="section-sub">Current focus and academic identity.</p>
+    <p class="section-sub">GeoAI research for inclusive mobility and AI-enabled urban planning.</p>
 
     <div class="stat-row">
       <div class="stat">
@@ -843,23 +912,21 @@ footer p {
       </div>
       <div class="stat">
         <div class="stat-num">2</div>
-        <div class="stat-label">Countries of Research Activity</div>
+        <div class="stat-label">Active Urban Research Projects</div>
       </div>
     </div>
 
     <div class="about-body">
       <p>
         I am a PhD researcher in Geospatial Data Science at Ariel University, Israel, with a strong foundation in computer science
-        and over 14 years of academic teaching and research leadership across Ethiopian universities.
-        My work sits at the intersection of <span class="highlight-phrase">machine learning, urban mobility, and spatial intelligence</span> —
-        building systems that are not only accurate but interpretable and actionable for decision-makers.
+        and more than 14 years of academic teaching, research, and leadership experience. My current work brings together
+        <span class="highlight-phrase">GeoAI, urban mobility, and spatial intelligence</span> to develop transparent tools that help planners and public agencies understand complex urban systems and make evidence-based decisions.
       </p>
       <p>
-        My research interests span time-series forecasting, predictive modelling, resource optimisation,
-        applied AI for real-world systems, healthcare analytics, emergency service demand modelling,
-        and explainable geospatial intelligence. I am particularly focused on the integration of
-        multimodal spatial and temporal data for interpretable decision support systems
-        in urban environments.
+        My research is organised around two connected projects: <strong>Urban GeoAI &amp; Mobility</strong>, which develops cross-city, explainable models for pedestrian mobility forecasting and inclusive planning; and <strong>METROPOLIS</strong>, an interoperable AI Urban Digital Twin initiative that combines heterogeneous urban data, predictive modelling, and scenario analysis through a Tel Aviv pilot.
+      </p>
+      <p>
+        Across both projects, I focus on multimodal geospatial data fusion, spatiotemporal machine learning, explainability, cross-city transferability, and scenario-aware decision support for climate- and growth-responsive urban planning.
       </p>
     </div>
   </section>
@@ -870,22 +937,22 @@ footer p {
       <span class="section-num">02 — Research</span>
     </div>
     <h2>Research Themes</h2>
-    <p class="section-sub">Main directions shaping my current work.</p>
+    <p class="section-sub">Three complementary directions connecting my Urban GeoAI and METROPOLIS work.</p>
     <div class="themes-grid">
       <div class="theme-card">
         <div class="theme-num">01</div>
-        <h3>Machine Learning &amp; Deep Learning</h3>
-        <p>Predictive modelling, representation learning, and intelligent systems for applied urban and public-sector domains.</p>
+        <h3>Urban GeoAI &amp; Inclusive Mobility</h3>
+        <p>Cross-city pedestrian mobility modelling using open and multimodal geospatial data, with a focus on pedestrian level-of-service mapping, accessibility, and inclusive urban analysis.</p>
       </div>
       <div class="theme-card">
         <div class="theme-num">02</div>
-        <h3>Spatiotemporal &amp; Time-Series Modelling</h3>
-        <p>Urban mobility forecasting, dynamic pattern analysis, and multimodal geospatial data fusion for inclusive city systems.</p>
+        <h3>Urban Digital Twins &amp; Scenario Planning</h3>
+        <p>Interoperable AI-based digital twins that integrate urban data, mobility forecasting, and climate- and growth-conditioned scenarios to support practical planning decisions.</p>
       </div>
       <div class="theme-card">
         <div class="theme-num">03</div>
-        <h3>Explainable AI &amp; Decision Support</h3>
-        <p>Interpretable machine learning for urban analytics, healthcare intelligence, and resource optimisation in public systems.</p>
+        <h3>Explainable &amp; Transferable Spatial AI</h3>
+        <p>Transparent spatiotemporal machine learning, model interpretation, and cross-city transfer methods that make urban AI more robust, understandable, and usable by decision-makers.</p>
       </div>
     </div>
   </section>
@@ -896,7 +963,7 @@ footer p {
       <span class="section-num">03 — Supervision</span>
     </div>
     <h2>Supervisory Team</h2>
-    <p class="section-sub">Academic guidance at Ariel University.</p>
+    <p class="section-sub">Doctoral supervision and project-based research guidance at Ariel University.</p>
     <div class="supervisors-grid">
       <div class="supervisor-card">
         <div class="supervisor-role">Primary Supervisor</div>
@@ -912,6 +979,11 @@ footer p {
         <div class="supervisor-role">Co-Supervisor</div>
         <h3><a href="https://cris.ariel.ac.il/en/persons/israel-klein-2/" target="_blank" rel="noopener">Dr. Israel Klein</a></h3>
         <div class="supervisor-inst">Ariel University, Israel</div>
+      </div>
+      <div class="supervisor-card">
+        <div class="supervisor-role">Project Supervisor · METROPOLIS</div>
+        <h3>Dr. Jonathan Dortheimer</h3>
+        <div class="supervisor-inst">Architectural Artificial Intelligence Research Lab (AAIRL), School of Architecture, Ariel University, Israel</div>
       </div>
     </div>
   </section>
@@ -983,6 +1055,16 @@ footer p {
     <p class="section-sub">Journal articles, conference papers, and work under review.</p>
     <div class="pub-list">
 
+	  <div class="pub-item">
+        <div class="pub-badge">
+          <div class="pub-year">2026</div>
+          <span class="pub-type type-journal">Journal</span>
+        </div>
+		<div>
+          <div class="pub-title"><a href="https://doi.org/10.3390/urbansci10060334">Few-Shot Transfer Learning for Cross-City Pedestrian Level-of-Service Mapping Using SpatioTemporal Graph Models.</a></div>
+          <div class="pub-venue">Kiros, A.; Dortheimer, J.; Teshuva, N.; & Cohen, A; (2026) — Under review / preprint available</div>
+        </div>
+	 </div>
       <div class="pub-item">
         <div class="pub-badge">
           <div class="pub-year">2026</div>
@@ -1027,20 +1109,11 @@ footer p {
         </div>
       </div>
 
-      <div class="pub-item">
-        <div class="pub-badge">
-          <div class="pub-year">—</div>
-          <span class="pub-type type-review">Review</span>
-        </div>
-		<div>
-          <div class="pub-title"><a href="https://www.preprints.org/manuscript/202604.1205">GeoAI-Based Few-Shot Transfer Learning for Cross-City Pedestrian Level-of-Service Mapping Using SpatioTemporal Graph Models.</a></div>
-          <div class="pub-venue">Kiros, A.; Dortheimer, J.; Teshuva, N.; & Cohen, A; (2026) — Under review / preprint available</div>
-        </div>
-	 </div>
+    
 	<div class="pub-item">
         <div class="pub-badge">
           <div class="pub-year">—</div>
-          <span class="pub-type type-review">Review</span>
+          <span class="pub-type type-review">Under Review</span>
         </div>  
         <div>
           <div class="pub-title">Integration of Predictive Data Mining Models and Knowledge Base System for Tax Fraud Detection: A Case Study of the Tigray Revenue Development Authority.</div>
@@ -1059,23 +1132,59 @@ footer p {
       <span class="section-num">07 — Projects</span>
     </div>
     <h2>Selected Research Projects</h2>
-    <p class="section-sub">Representative themes from applied and interdisciplinary work.</p>
+    <p class="section-sub">Two connected research streams in GeoAI, urban mobility, and AI-enabled planning support.</p>
+
     <div class="projects-grid">
-      <div class="project-card">
+      <article class="project-card project-card-featured">
         <div class="project-icon" style="background:#e8f4f4;">🗺️</div>
-        <h3>Urban GeoAI &amp; Mobility</h3>
-        <p>Multimodal geospatial data fusion for inclusive urban mobility analysis and explainable spatial AI systems.</p>
-      </div>
-      <div class="project-card">
-        <div class="project-icon" style="background:#fef3e2;">⚖️</div>
-        <h3>AI for Public Systems</h3>
-        <p>Predictive and knowledge-based systems for tax fraud detection, emergency demand forecasting, and decision support.</p>
-      </div>
-      <div class="project-card">
-        <div class="project-icon" style="background:#f3f4f6;">🔧</div>
-        <h3>Applied Intelligent Platforms</h3>
-        <p>License plate recognition, personalised learning assistants, smart tourism, vulnerability detection, and multilingual information systems.</p>
-      </div>
+        <div>
+          <div class="project-kicker">Research Project 01</div>
+          <h3>Urban GeoAI &amp; Mobility</h3>
+          <p>
+            A cross-city GeoAI research programme that combines multimodal geospatial data, spatiotemporal machine learning,
+            and explainable AI to understand and forecast pedestrian mobility. The work develops reproducible methods for
+            inclusive mobility analysis, pedestrian level-of-service mapping, transfer learning, and transparent decision support.
+          </p>
+          <div class="project-role">
+            <strong>Focus:</strong> Urban mobility forecasting, multimodal spatial data fusion, cross-city model transfer,
+            explainable AI, and spatial decision-support systems for planners and public agencies.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">GeoAI</span>
+            <span class="project-tag">Urban Mobility</span>
+            <span class="project-tag">Spatiotemporal ML</span>
+            <span class="project-tag">Explainable AI</span>
+            <span class="project-tag">Inclusive Planning</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card project-card-featured metropolis-card">
+        <div class="project-icon" style="background:#fef3e2;">🏙️</div>
+        <div>
+          <div class="project-kicker">Research Project 02 · Tel Aviv Pilot</div>
+          <h3>METROPOLIS: Interoperable AI Urban Digital Twin</h3>
+          <p>
+            A research and development collaboration to build an interoperable, AI-based Urban Digital Twin that integrates
+            heterogeneous city data, predictive models, and scenario analysis for evidence-based planning. The Tel Aviv pilot
+            evaluates technical performance, usability, governance relevance, and the framework’s potential to be adapted in other cities.
+          </p>
+          <div class="project-role">
+            <strong>My role:</strong> Urban Digital Twin research and development, with a focus on scenario-aware pedestrian
+            mobility forecasting, climate- and growth-conditioned planning support, and deployable urban analytics.
+            <br>
+            <strong>Project supervision:</strong> Dr. Jonathan Dortheimer, Architectural Artificial Intelligence Research Lab (AAIRL),
+            School of Architecture, Ariel University.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Urban Digital Twins</span>
+            <span class="project-tag">Urban AI</span>
+            <span class="project-tag">GIS Interoperability</span>
+            <span class="project-tag">Mobility Forecasting</span>
+            <span class="project-tag">Planning Support</span>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
